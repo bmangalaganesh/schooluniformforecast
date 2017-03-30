@@ -1,6 +1,6 @@
 package com.forecastessentials.school.services.proxy;
 
-import javax.inject.Named;
+//import javax.inject.Named;
 
 import org.springframework.cloud.netflix.feign.FeignClient;
 import org.springframework.web.bind.annotation.PathVariable;

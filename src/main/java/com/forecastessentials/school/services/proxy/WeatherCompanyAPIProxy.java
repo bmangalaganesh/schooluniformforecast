@@ -53,9 +53,9 @@ feign.FeignException: status 403 reading WeatherCompanyAPIProxy#getWeatherForeca
 
 
 	 */
-	@RequestMapping(method = RequestMethod.GET, value = "/{latitude}/{longitude}/forecast/hourly/48hour.json?units={units}", produces = "application/json")
-	public String getWeatherForecastHourlyInfo(@PathVariable("latitude") String latitude,
-			@PathVariable("longitude") String longitude, @Named("units") String units);
+	//@RequestMapping(method = RequestMethod.GET, value = "/{latitude}/{longitude}/forecast/hourly/48hour.json?units={units}", produces = "application/json")
+	//public String getWeatherForecastHourlyInfo(@PathVariable("latitude") String latitude,
+	//		@PathVariable("longitude") String longitude, @Named("units") String units);
 
 	
 	@RequestMapping(method = RequestMethod.GET, value = "/{latitude}/{longitude}/forecast/hourly/48hour.json", produces = "application/json")

@@ -1,8 +1,9 @@
 applications:
 - disk_quota: 1024M
-  host: schooluniformforecast
-  name: schooluniformforecast
-  path: .
+  host: school-uniform
+  name: school-uniform
+  path: ./school-uniform-1.0.0-SNAPSHOT.jar
   instances: 1
   memory: 256M
-  
+  buildpack: java_buildpack
+  domain: mybluemix.net

@@ -95,17 +95,20 @@
 			</plugin>
 		</plugins>
 
+		
 		<!-- Using this to copy the manifest.yml file to the target directory so that it can be used to deploy to CF -->
+		<!-- 
 		<resources>
 			<resource>
 				<filtering>true</filtering>
 				<directory>${project.basedir}</directory>
 				<targetPath>${project.build.directory}</targetPath>
-				<includes><!-- what -->
+				<includes>
 					<include>manifest.yml</include>
 				</includes>
 			</resource>
 		</resources>
+		 -->
 
 	</build>
 

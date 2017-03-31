@@ -1,5 +1,9 @@
 package com.forecastessentials.school.domain;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -25,6 +29,10 @@ public class WeatherForecastData {
 	private int feelsLike;
 	private String temp;
 	private String hourOfForecast;
+
+	// This containst the Date representation of the time specified in
+	// hourOfForecast
+	private Date forecastTime;
 	private String weatherPhrase;
 	private String uvIndex;
 	private String dayOfWeek;
@@ -50,31 +58,45 @@ public class WeatherForecastData {
 		this.temp = temp;
 	}
 
-	public String getFcst_valid_local() {
+	public String getHourOfForecastl() {
 		return hourOfForecast;
 	}
 
 	@JsonProperty("fcst_valid_local")
-	public void setFcst_valid_local(String fcst_valid_local) {
+	public void setHourOfForecast(String fcst_valid_local) {
 		this.hourOfForecast = fcst_valid_local;
+		
+		//Set the forecast Time as well here..
+		// "fcst_valid_local": "2017-03-29T16:00:00+1100"
+		try {
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssX");
+			this.setForecastTime(sdf.parse(fcst_valid_local));
+		} catch (ParseException e) {
+			// The data should be good. Will have to think about how to handle this error..
+			//For the moment - swallow the error and move on...
+			e.printStackTrace();
+		}
+		
 	}
 
-	public String getPhrase_32char() {
+	public String getWeatherPhrase() {
 		return weatherPhrase;
 	}
 
 	@JsonProperty("phrase_32char")
-	public void setPhrase_32char(String phrase_32char) {
-		this.weatherPhrase = phrase_32char;
+	public void setWeatherPhrase(String weatherPhrase) {
+		this.weatherPhrase = weatherPhrase;
 	}
 
-	public String getUv_index_raw() {
+	public String getUvIndex() {
 		return uvIndex;
 	}
 
+	
+
 	@JsonProperty("uv_index_raw")
-	public void setUv_index_raw(String uv_index_raw) {
-		this.uvIndex = uv_index_raw;
+	public void setUvIndex(String uvIndex) {
+		this.uvIndex = uvIndex;
 	}
 
 	public String getDayOfWeek() {
@@ -111,6 +133,14 @@ public class WeatherForecastData {
 	@JsonProperty("max_temp")
 	public void setMaximumTemperature(String maximumTemperature) {
 		this.maximumTemperature = maximumTemperature;
+	}
+
+	public Date getForecastTime() {
+		return forecastTime;
+	}
+
+	public void setForecastTime(Date forecastTime) {
+		this.forecastTime = forecastTime;
 	}
 
 }
